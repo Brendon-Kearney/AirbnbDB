@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/find1', (req,res)=>{
+router.get('/send', (req,res)=>{
   mongoQueries.findListing(res);
 })
 

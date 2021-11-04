@@ -8,7 +8,7 @@ async function findListing(response)
   let db = await connection.db('sample_airbnb');
   console.log('open airbnb databse')
 
-  let listingsAndReviews = await db.collections('ListingsAndReviews')
+  let listingsAndReviews = await db.collection('listingsAndReviews')
   console.log('select listings and reviews')
 
   let listing = await listingsAndReviews.findOne({})
