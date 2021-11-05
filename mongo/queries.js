@@ -39,12 +39,12 @@ async function findListing2 (response)
   }
 }
 
-async function findListing3(response)
+async function findListing3(response,criteria)
 {
   mongoClient.connect()
     .then(connection=>connection.db('sample_airbnb'))
     .then(db=>db.collection('listingsAndReviews'))
-    .then(listingsAndReviews=>listingsAndReviews.findOne())
+    .then(listingsAndReviews=>listingsAndReviews.findOne(criteria))
     .then(listing=>response.send(listing))
     .catch(error => console.log(error))
 
