@@ -1,6 +1,6 @@
 const mongoClient = require("./config");
 
-async function findListing(response)
+async function findListing1(response)
 {
   console.log('Find Listing');
   let connection = await mongoClient.connect()
@@ -19,4 +19,38 @@ async function findListing(response)
   connection.close()  
 }
 
-module.exports = {findListing}
+async function findListing2 (response)
+{
+  try{
+    var connection = await mongoClient.connect()
+    let db = await connection.db('sample_airbnb');
+    let listingsAndReviews = await db.collection('listingsAndReviews')
+    let listing = await listingsAndReviews.findOne({})
+    response.send(listing)
+  }
+  catch(error)
+  {
+    console.log(error)
+    response.send(error)
+  }
+  finally{
+    // This is where any cleanup code goes
+    connection.close()
+  }
+}
+
+async function findListing3(response)
+{
+  mongoClient.connect()
+    .then(connection=>connection.db('sample_airbnb'))
+    .then(db=>db.collection('listingsAndReviews'))
+    .then(listingsAndReviews=>listingsAndReviews.findOne())
+    .then(listing=>response.send(listing))
+    .catch(error => console.log(error))
+
+}
+
+
+let findListing = findListing3
+
+module.exports = {findListing}  // Shortcut for {findListing:findListing}

@@ -3,10 +3,15 @@ var mongoClient = require('./../mongo/config')
 var mongoQueries = require('./../mongo/queries')
 var router = express.Router();
 
-/* GET users listing. */
+
+// localhost:3000/airbnb
 router.get('/', (req, res) => {
   res.render('airbnb', {title:'AirBnb', mongoHost:mongoClient.options.srvHost});
 });
+
+/* GET users listing. 
+  localhost:3000/airbnb/send
+*/
 
 
 router.get('/send', (req,res)=>{
