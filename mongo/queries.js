@@ -51,6 +51,33 @@ async function findListing3(response,criteria)
 }
 
 
+async function findListings(response,criteria) {
+  try {
+    var connection = await mongoClient.connect()
+    let db = await connection.db('sample_airbnb');
+    let listingsAndReviews = await db.collection('listingsAndReviews')
+    let cursor = await listingsAndReviews
+        .find({bedrooms:2},{projection : {_id:0, description:1, name:1  }})
+        .limit(4)
+    
+        let listings = await cursor.toArray()
+
+    response.render('listings', {listings})
+  }
+  catch (error) {
+    console.log(error)
+    response.send(error)
+  }
+  finally {
+    // This is where any cleanup code goes
+    connection.close()
+  }
+}
+
 let findListing = findListing3
 
-module.exports = {findListing}  // Shortcut for {findListing:findListing}
+module.exports = {findListing,findListings}  
+// Shortcut for 
+//  {   findListing:findListing,
+//      findListings:findListings
+//  }

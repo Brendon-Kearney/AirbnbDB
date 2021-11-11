@@ -18,7 +18,6 @@ router.get('/send', (req,res)=>{
 
   console.log(req.query)
 
-  parseInt
   let criteria = 
     {   bedrooms:{$gte:  parseInt(req.query.bedrooms)}, 
         number_of_reviews:{$gte:50}, 
@@ -28,6 +27,15 @@ router.get('/send', (req,res)=>{
 
   mongoQueries.findListing(res,criteria);
 })
+
+router.get ("/list", (req,res)=>{
+
+  let criteria = {}
+  mongoQueries.findListings(res,criteria)
+
+
+})
+
 
 
 
