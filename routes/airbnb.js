@@ -30,8 +30,16 @@ router.get('/send', (req,res)=>{
 
 router.get ("/list", (req,res)=>{
 
-  let criteria = {}
-  mongoQueries.findListings(res,criteria)
+  let criteria =
+  {
+    bedrooms: { $gte: parseInt(req.query.bedrooms) },
+    number_of_reviews: { $gte: 4 },
+    "address.country_code" : "US",
+      amenities : { $in: ['Wifi', 'Coffee maker'] }
+  }
+  let projection = {}
+
+  mongoQueries.findListings(res,criteria,projection,4)
 
 
 })
