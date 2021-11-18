@@ -18,16 +18,15 @@ router.get('/find-one', async (req,res)=>{
 
   console.log(req.query)
 
-  let amenities = [] 
-  if (req.query.amenities)
-    amenities = req.query.amenities
 
   let criteria = 
     {   bedrooms:{$gte:  parseInt(req.query.bedrooms)}, 
         number_of_reviews:{$gte:50}, 
-        "address.country_code" : "CA" ,
-         amenities : {$in : amenities }
+        "address.country_code" : "CA" 
       }
+
+  if (req.query.amenities)
+    criteria ["amenities"] = {$all : req.query.amenities}
 
   let listing = await mongoQueries.findListing(criteria);
   res.send(listing)
