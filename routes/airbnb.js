@@ -21,7 +21,7 @@ router.get('/send', (req,res)=>{
   let criteria = 
     {   bedrooms:{$gte:  parseInt(req.query.bedrooms)}, 
         number_of_reviews:{$gte:50}, 
-        "address.country_code" : "US" ,
+        "address.country_code" : "CA" ,
          amenities : {$in : ['Wifi', 'Coffee maker' ]  }
       }
 
