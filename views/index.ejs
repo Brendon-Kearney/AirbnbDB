@@ -9,14 +9,21 @@
     <p>Welcome to <%= title %></p>
 
     <h1>One listing</h1>
-    <form action="/airbnb/send">
+    <form action="/airbnb/find-one">
       <label for="bedrooms">Minimum number of bedrooms</label>
-      <input type="text" id="bedrooms" name="bedrooms">
+      <input type="text" id="bedrooms" name="bedrooms" value="1"><br><br>
+      <h2>Amenities</h2>
+          <input type="checkbox" name="amenities[]" id="wifi" value="Wifi">
+          <label for="wifi">Wifi</label><br>
+          <input type="checkbox" name="amenities[]" id="coffee-maker" value="Coffee maker">
+          <label for="coffee-maker">Coffee maker</label>
+
+      <br><br>
       <input type="submit" value="Send Query">
     </form>
 
     <h1>Many listings</h1>
-    <form action="/airbnb/list">
+    <form action="/airbnb/find-many">
       <label for="bedrooms">Minimum number of bedrooms</label>
       <input type="text" id="bedrooms" name="bedrooms">
       <input type="submit" value="Send Query">
