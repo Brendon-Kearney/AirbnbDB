@@ -14,28 +14,33 @@ router.get('/', (req, res) => {
 */
 
 
-router.get('/send', (req,res)=>{
+router.get('/find-one', async (req,res)=>{
 
   console.log(req.query)
 
+  let amenities = [] 
+  if (req.query.amenities)
+    amenities = req.query.amenities
+
   let criteria = 
     {   bedrooms:{$gte:  parseInt(req.query.bedrooms)}, 
-        number_of_reviews:{$gte:50}, 
+        number_of_reviews:{$gte:5}, 
         "address.country_code" : "US" ,
-         amenities : {$in : ['Wifi', 'Coffee maker' ]  }
+        amenities: { $all: amenities }
       }
 
-  mongoQueries.findListing(res,criteria);
+  let listing = await mongoQueries.findListing(criteria);
+  res.send(listing)
 })
 
-router.get ("/list", (req,res)=>{
+router.get ("/find-many", (req,res)=>{
 
   let criteria =
   {
     bedrooms: { $gte: parseInt(req.query.bedrooms) },
     number_of_reviews: { $gte: 4 },
     "address.country_code" : "US",
-      amenities : { $in: ['Wifi', 'Coffee maker'] }
+      amenities : { $all: amenities }
   }
   let projection = {}
 
