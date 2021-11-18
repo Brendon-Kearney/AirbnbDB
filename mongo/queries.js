@@ -45,7 +45,7 @@ async function findListings(response, criteria, projection, nListings)
         .find(criteria,{projection})
         .limit(nListings))
       .then(cursor=>cursor.toArray())
-      .then(listings=>response.send(listings))
+      .then(listings=>response.render('listings',{listings}))
       .catch(error=>console.log(error))
 }
 
