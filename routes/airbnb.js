@@ -38,8 +38,9 @@ router.get ("/find-many", (req,res)=>{
   {
     bedrooms: { $gte: parseInt(req.query.bedrooms) },
     number_of_reviews: { $gte: 4 },
-    "address.country_code" : "CA",
+    "address.country":{$gte: req.query.country}
   }
+
   if (req.query.amenities)
   criteria ["amenities"] = {$all : req.query.amenities}
 

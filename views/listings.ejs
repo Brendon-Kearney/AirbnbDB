@@ -10,15 +10,22 @@
     <h1>Airbnb Listings</h1>
 
 
-    <ol>
+    <table>
     <%   listings.forEach(listing=>{ %>
-        <li>
+        <tr>
              <%= listing._id %>
              <b><%= listing.name %></b> 
             <br>        
-            <%= listing.description %>
-        </li>
+            <b>Number Of Bedrooms: </b> <%= listing.bedrooms %>
+            <br>  
+            <b>Summary: </b> <%= listing.summary %>
+            <br>  
+            <b>Description: </b> <%= listing.description %>
+            <br>  
+            <b>Image Of Listing: </b> <%= listing.images.picture_url %>
+            <br><br>
+        </tr>
     <% }) %> 
-    </ol>
+    </table>
 </body>
 </html>
