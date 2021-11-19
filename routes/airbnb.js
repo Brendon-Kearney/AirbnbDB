@@ -38,9 +38,11 @@ router.get ("/find-many", (req,res)=>{
   {
     bedrooms: { $gte: parseInt(req.query.bedrooms) },
     number_of_reviews: { $gte: 4 },
-    "address.country_code" : "US",
-      amenities : { $all: amenities }
+    "address.country_code" : "CA",
   }
+  if (req.query.amenities)
+  criteria ["amenities"] = {$all : req.query.amenities}
+
   let projection = {}
 
   mongoQueries.findListings(res,criteria,projection,4)
