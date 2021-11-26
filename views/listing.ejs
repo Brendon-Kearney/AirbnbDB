@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Airbnb Listing</h1>
+
+            <h3><%= listing.name %></h3>
+            <h3>Listing ID: <%= listing._id %></h3>                            
+            <h3>Number Of Bedrooms: <%= listing.bedrooms %></h3>       
+            <h3>Number Of Beds: <%= listing.beds %></h3>    
+            <h3>Number Of Reviews: <%= listing.number_of_reviews %></h3> 
+            <h3>Property Type: <%= listing.property_type %></h3>          
+            <h3>Minimum Nights: <%= listing.minimum_nights %></h3> 
+            <h3>Country: <%= listing.address.country %></h3> 
+            <br>
+            <h3>Summary: <%= listing.summary %></h3>
+            <h3>Amenities: <%= listing.amenities %></h3>                    
+            <h3>Description: <%= listing.description %></h3>           
+</body>
+</html>

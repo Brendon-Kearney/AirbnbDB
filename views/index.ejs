@@ -6,12 +6,20 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>Brendon Kearney</p>
 
     <h1>One listing</h1>
     <form action="/airbnb/find-one">
       <label for="bedrooms">Minimum number of bedrooms</label>
-      <input type="text" id="bedrooms" name="bedrooms" value="1"><br><br>
+      <input type="text" id="bedrooms" name="bedrooms" value="1"><br>
+      <label for="property_type">Type of property</label>
+      <input type="text" id="property_type" name="property_type"><br>
+      <label for="minimum_nights">Minimum number of nights</label>
+      <input type="text" id="minimum_nights" name="minimum_nights" value="1"><br>
+      <label for="country">Country</label>
+      <input type="text" id="country" name="country"><br>
+      <label for="country_code">Country code</label>
+      <input type="text" id="country_code" name="country_code"><br><br>
       <h2>Amenities</h2>
           <input type="checkbox" name="amenities[]" id="wifi" value="Wifi">
           <label for="wifi">Wifi</label><br>
