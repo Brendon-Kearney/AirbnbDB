@@ -9,11 +9,6 @@ router.get('/', (req, res) => {
   res.render('airbnb', {title:'AirBnb', mongoHost:mongoClient.options.srvHost});
 });
 
-/* GET users listing. 
-  localhost:3000/airbnb/send
-*/
-
-
 router.get('/find-one', async (req,res)=>{
 
   console.log(req.query)
@@ -53,10 +48,6 @@ router.get ("/find-many", (req,res)=>{
 
 
 })
-
-
-
-
 
 
 module.exports = router;
