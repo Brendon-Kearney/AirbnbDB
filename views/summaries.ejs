@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/summariesTable.css" rel="stylesheet" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Airbnb Listings</h1>
+
+    <table>
+    <%   summaries.forEach(summaries=>{ %>
+        <tr>
+            <div class="airBnb">
+                <form action="/airbnb/find-oneId">
+                    <input type="submit" name="id" value= <%= summaries._id %>>
+                    <b><%= summaries.name %></b> 
+                    <br>        
+                    <b>Number Of Bedrooms: </b> <%= summaries.bedrooms %>
+                    <br>
+                    <b>Country: </b> <%= summaries.address.country %>
+                    <br>  
+                    <b>Summary: </b> <%= summaries.summary %>
+                    <br>  
+                    <b>Description: </b> <%= summaries.description %>
+                    <br>  
+                    <b>Image Of Listing: </b> <%= summaries.images.picture_url %>
+                    <br><br>
+                </form>
+            </div>
+        </tr>
+    <% }) %> 
+    </table>
+</body>
+</html>

@@ -13,13 +13,13 @@
       <label for="bedrooms">Minimum number of bedrooms</label>
       <input type="text" id="bedrooms" name="bedrooms" value="1"><br>
       <label for="property_type">Type of property</label>
-      <input type="text" id="property_type" name="property_type"><br>
+      <input type="text" id="property_type" name="property_type" value="Apartment"><br>
       <label for="minimum_nights">Minimum number of nights</label>
       <input type="text" id="minimum_nights" name="minimum_nights" value="1"><br>
       <label for="country">Country</label>
-      <input type="text" id="country" name="country"><br>
+      <input type="text" id="country" name="country" value="Canada"><br>
       <label for="country_code">Country code</label>
-      <input type="text" id="country_code" name="country_code"><br><br>
+      <input type="text" id="country_code" name="country_code" value="CA"><br><br>
       <h2>Amenities</h2>
           <input type="checkbox" name="amenities[]" id="wifi" value="Wifi">
           <label for="wifi">Wifi</label><br>
@@ -35,9 +35,28 @@
     <h1>Many listings</h1>
     <form action="/airbnb/find-many">
       <label for="bedrooms">Minimum number of bedrooms</label>
-      <input type="text" id="bedrooms" name="bedrooms"><br>
+      <input type="text" id="bedrooms" name="bedrooms" value="1"><br>
+      <label for="numbListings">Number Of Listings</label>
+      <select id="numbListings" name="numbListings" >  
+        <option value="5">5</option>  
+        <option value="6">6</option>  
+        <option value="7">7</option> 
+        <option value="8">8</option>
+        <option value="9">9</option> 
+        <option value="10">10</option> 
+      </select>
+      <br>
+
       <label for="country">Country</label>
-      <input type="text" id="country" name="country"><br>
+      <select id="country" name="country" >  
+        <option value="Canada">Canada</option>  
+        <option value="United States">United States</option>  
+        <option value="Portugal">Portugal</option> 
+        <option value="Turkey">Turkey</option>
+        <option value="Hong Kong">Hong Kong</option> 
+      </select>
+      <br><br>  
+      
       <input type="submit" value="Send Query">
     </form>
 

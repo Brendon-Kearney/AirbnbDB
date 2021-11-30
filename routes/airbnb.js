@@ -13,14 +13,13 @@ router.get('/find-one', async (req,res)=>{
 
   console.log(req.query)
 
-
   let criteria = 
-    {   bedrooms: {$gte:  parseInt(req.query.bedrooms)}, 
+    {   bedrooms: {$gte: parseInt(req.query.bedrooms)}, 
         number_of_reviews: {$gte:50}, 
-        property_type : {$gte: req.query.property_type},
-        minimum_nights : {$gte: req.query.minimum_nights},
-        "address.country" : {$gte: req.query.country},
-        "address.country_code" : {$gte: req.query.country_code}
+        "property_type" : req.query.property_type,
+        minimum_nights : {$lte: req.query.minimum_nights},
+        "address.country" : req.query.country,
+        "address.country_code" : req.query.country_code
       }
 
   if (req.query.amenities)
@@ -34,19 +33,29 @@ router.get ("/find-many", (req,res)=>{
 
   let criteria =
   {
-    bedrooms: {$gte: parseInt(req.query.bedrooms) },
+    bedrooms: {$gte: parseInt(req.query.bedrooms)} ,
     number_of_reviews: {$gte: 4 },
-    "address.country": {$gte: req.query.country}
+    "address.country": req.query.country
   }
 
-  if (req.query.amenities)
-  criteria ["amenities"] = {$all : req.query.amenities}
+  let numberOfListings = parseInt(req.query.numbListings);
 
   let projection = {}
 
-  mongoQueries.findListings(res,criteria,projection,4)
+  mongoQueries.findListings(res,criteria,projection,numberOfListings)
 
 
+})
+
+router.get('/find-oneId', async (req,res)=>{
+
+  let criteria = 
+    {   
+      _id: req.query.id
+    }
+
+  let listing = await mongoQueries.findListing(criteria);
+  res.render('listing', {listing})
 })
 
 
