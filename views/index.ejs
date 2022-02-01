@@ -6,8 +6,9 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Brendon Kearney</p>
+    <p>Brendon Kearney</p> <!-- replace 'Welcome to Express' with 'Brendon Kearney' -->
 
+    <!--Add text inputs to the One listing form-->
     <h1>One listing</h1>
     <form action="/airbnb/find-one">
       <label for="bedrooms">Minimum number of bedrooms</label>
@@ -32,10 +33,12 @@
       <input type="submit" value="Send Query">
     </form>
 
+    <!--Add text inputs and drop lists to the Many listings form-->
     <h1>Many listings</h1>
     <form action="/airbnb/find-many">
       <label for="bedrooms">Minimum number of bedrooms</label>
       <input type="text" id="bedrooms" name="bedrooms" value="1"><br>
+      
       <label for="numbListings">Number Of Listings</label>
       <select id="numbListings" name="numbListings" >  
         <option value="5">5</option>  

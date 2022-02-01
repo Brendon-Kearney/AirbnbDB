@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   res.render('airbnb', {title:'AirBnb', mongoHost:mongoClient.options.srvHost});
 });
 
+//renders one listing that matches the scearch criteria with listing.ejs
 router.get('/find-one', async (req,res)=>{
 
   console.log(req.query)
@@ -29,6 +30,7 @@ router.get('/find-one', async (req,res)=>{
   res.render('listing', {listing})
 })
 
+//renders multiple listings that match the scearch criteria with summaries.ejs
 router.get ("/find-many", (req,res)=>{
 
   let criteria =
@@ -47,6 +49,7 @@ router.get ("/find-many", (req,res)=>{
 
 })
 
+//renders single listing from summaries.ejs with listing.ejs
 router.get('/find-oneId', async (req,res)=>{
 
   let criteria = 

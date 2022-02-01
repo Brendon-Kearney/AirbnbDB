@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Airbnb Search App' });
+  res.render('index', { title: 'Airbnb Search App' }); // change heading from 'express' to 'Airbnb Search App'
 });
 
 module.exports = router;
